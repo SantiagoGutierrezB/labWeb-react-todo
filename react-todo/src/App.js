@@ -3,7 +3,6 @@
 import React from 'react';
 import './App.css';
 
-import Create from './components/todos/Create';
 import TodoList from './components/todos/TodoList';
 
 function App() {
@@ -36,7 +35,6 @@ function App() {
       <h1>Todo List</h1>
       {/* <Create addTodo={addTodo}/> */}
       {/* <TodoList todos={todos} markAsDone={markAsDone} deleteTask={deleteTask}/> */}
-      <Create />
       <TodoList />
     </div>
   );

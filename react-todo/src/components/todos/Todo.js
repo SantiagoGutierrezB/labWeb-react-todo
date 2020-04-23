@@ -24,18 +24,36 @@ import axios from 'axios';
 
 // Method with axios
 export default class Todo extends React.Component {  
-    
+    constructor(props) {
+        super(props);
+        // Hacer el binding de mi instancia a la funcion
+        this.handleMarkAsDone = this.handleMarkAsDone.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+
     handleMarkAsDone = (event, id) => {
+        // Crear variable que haga referencia a la instancia (this)
+        let _this = this;
+        
         axios.post(`http://localhost:3030/tasks/${id}/done`).then(res =>{
             console.log(res);
             console.log(res.data);
+
+            _this.props.handleGetTodos();
         });
     }
   
-    handleDelete = (event, id) => {
+    handleDelete = (event, id) => {        
+        // Crear variable que haga referencia a la instancia (this)
+        let _this = this;
+
         axios.post(`http://localhost:3030/tasks/${id}/delete`).then(res =>{
             console.log(res);
             console.log(res.data);
+
+            _this.props.handleGetTodos();
+            
         });
     }
   

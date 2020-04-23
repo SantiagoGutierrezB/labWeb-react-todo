@@ -1,6 +1,7 @@
 // src/components/todos/TodoList.js
 import React from 'react';
 import axios from 'axios';
+import Create from './Create';
 import Todo from './Todo';
 
 // Method without using axios
@@ -75,33 +76,54 @@ import Todo from './Todo';
 // export default TodoList;
 
 export default class TodoList extends React.Component {  
-  state = {
-    todos: [],
+  // state = {
+  //   todos: [],
+  // }
+
+  constructor(props) {
+    super(props);
+    this.state = {todos: []};
+    // Hacer el binding de mi instancia a la funcion
+    this.handleGetTodos = this.handleGetTodos.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount() {    
     axios.get('http://localhost:3030/getList').then(res => {
       console.log(res);
       this.setState({todos: res.data});
     });
   }
 
+  handleGetTodos(event) {
+    // Crear variable que haga referencia a la instancia (this)
+    let _this = this;
+    
+    axios.get('http://localhost:3030/getList').then(res => {
+      console.log(res);
+      // Llamar la funcion a traves de la referencia de la instancia
+      _this.setState({todos: res.data});
+    });
+  }
+
   render() {
     return (
-      <table border="1">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Task</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.todos.map((todo) => {
-            return <Todo key={todo.id} id={todo.id} todo={todo} />
-          })}
-        </tbody>
-      </table>
+      <>
+        <Create handleGetTodos={this.handleGetTodos} />
+        <table border="1">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Task</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.todos.map((todo, i) => {
+              return <Todo key={i} id={todo.id} todo={todo} todoList={this.state.todos} handleGetTodos={this.handleGetTodos} />
+            })}
+          </tbody>
+        </table>
+      </>
     );
   }
 }
