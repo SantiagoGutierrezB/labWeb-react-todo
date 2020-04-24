@@ -2,26 +2,6 @@
 import React from 'react';
 import axios from 'axios';
 
-// Method without using axios
-// const Todo = ({id, todo, handleMarkAsDone, handleDelete}) => {
-//     // console.log(id);
-//     // console.log(todo);
-//     return (
-//         <tr key={id} style={{backgroundColor: todo.status === 'pending' ? 'white' : 'grey'}}>
-//           <td>#{(id + 1)}</td>
-//           <td>{todo.description}</td>
-//           <td>
-//             {todo.status === 'pending' && (
-//               <input type="button" value="terminado?" onClick={(event) => handleMarkAsDone(event, id)}/>
-//             )}
-//             <input type="button" value="eliminar" onClick={(event) => handleDelete(event, id)}/>
-//           </td>
-//         </tr>
-//     );
-// }
-
-// export default Todo;
-
 // Method with axios
 export default class Todo extends React.Component {  
     constructor(props) {
