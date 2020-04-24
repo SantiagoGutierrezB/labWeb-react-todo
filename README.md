@@ -1,16 +1,20 @@
-# Express Boilerplate
+La tarea consta de la versión de la lista de todos que se encuentra en la carpeta de ldaw-todo-list y el proyecto de react en la carpeta de react-todo. Se necesitan ejecutar ambos archivos para que funciones las peticiones http.
 
-Este proyecto lo puedes utilizar como base para construir tus sistemas.
+Para el proyecto de ldaw-todo-list se necesita crear su respectivo archivo .env
 
-El proyecto ya viene configurado con algunos paquetes comunes que utilizamos.
+# Puertos
 
-## Instalación
+El proyecto ldaw-todo-list se ejecuta en localhost:3030
 
-```shell
-npm install
-```
+El proyecto react-todo se ejecuta en localhost:3000
 
-## Ejecución
+## Ejecución ldaw-todo-list
+
 ```
 node server.js
+```
+
+## Ejecución react-todo
+```
+npm run start
 ```
