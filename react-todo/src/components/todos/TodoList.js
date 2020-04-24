@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import Create from './Create';
 import Todo from './Todo';
+import "./todoList.css";
 
 export default class TodoList extends React.Component {  
 
@@ -35,7 +36,13 @@ export default class TodoList extends React.Component {
     return (
       <>
         <Create handleGetTodos={this.handleGetTodos} />
-        <table border="1">
+        <div className="todoList">
+          {this.state.todos.map((todo, i) => {
+            return <Todo key={i} id={todo.id} todo={todo} todoList={this.state.todos} handleGetTodos={this.handleGetTodos} />
+          })}
+        </div>
+
+        {/* <table border="1">
           <thead>
             <tr>
               <th>#</th>
@@ -48,7 +55,7 @@ export default class TodoList extends React.Component {
               return <Todo key={i} id={todo.id} todo={todo} todoList={this.state.todos} handleGetTodos={this.handleGetTodos} />
             })}
           </tbody>
-        </table>
+        </table> */}
       </>
     );
   }

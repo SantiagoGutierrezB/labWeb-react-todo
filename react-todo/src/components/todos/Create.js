@@ -1,6 +1,7 @@
 // src/components/todos/Create.js
 import React from 'react';
 import axios from 'axios';
+import "./create.css";
 
 // Method with axios
 export default class Create extends React.Component {  
@@ -37,11 +38,10 @@ export default class Create extends React.Component {
   
     render() {
       return (
-        <div>
+        <div className="create">
             <form onSubmit={this.handleSubmit}>
-                <label>Task:</label>
-                <input type='text' name='description' onChange={this.handleTodoChange}></input>
-                <button type='submit'>Create</button>
+                <input className="taskInput" type='text' name='description' placeholder="I have to..." onChange={this.handleTodoChange}></input>
+                <button className="createBtn" type='submit'>Create</button>
             </form>
         </div>
       );
